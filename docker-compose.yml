@@ -12,6 +12,10 @@ services:
       - 3000:3000
     depends_on:
       - db
+    volumes:
+      - ./:/usr/src/app 
+    networks:
+      - network
   db:
     container_name: workout-tracker-postgres
     image: postgres
@@ -24,7 +28,13 @@ services:
       POSTGRES_DB: workout-tracker-db
     volumes:
        - postgres-db:/data/postgres
+    networks:
+      - network
 
 volumes:
   postgres-db:
     driver: local
+
+networks:
+  network:
+    driver: bridge
