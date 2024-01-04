@@ -4,7 +4,6 @@ services:
   api:
     container_name: workout-tracker-api
     image: workout-tracker-api-image
-    restart: always
     build:
       context: .
       dockerfile: Dockerfile.dev
@@ -19,7 +18,6 @@ services:
   db:
     container_name: workout-tracker-postgres
     image: postgres
-    restart: always
     ports:
       - 5432:5432
     environment:
